@@ -63,7 +63,7 @@ public class Main {
       ResultSet rs = stmt.executeQuery("SELECT * FROM ticksname");
       ArrayList<String> output = new ArrayList<String>();
       while (rs.next()) {
-        output.add("Read from DB: " + rs.getTimestamp("tick")+rs.getString("name"));
+        output.add("Read from DB: " + rs.getTimestamp("tick")+" "+rs.getString("name"));
       }
 
       model.put("records", output);
@@ -87,7 +87,7 @@ public class Main {
 
   
   private String getRandomString() {
-    String RANDOMCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    String RANDOMCHARS = "abcdefghijklmnopqrstuvwxyz";
     StringBuilder randstring = new StringBuilder();
     Random rnd = new Random();
     while (randstring.length() < 10) { // length of the random string.
