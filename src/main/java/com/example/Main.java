@@ -33,6 +33,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
 
 @Controller
 @SpringBootApplication
@@ -84,17 +85,18 @@ public class Main {
     }
   }
 
-
-  protected String getRandomString() {
+  
+  private String getRandomString() {
     String RANDOMCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     StringBuilder randstring = new StringBuilder();
     Random rnd = new Random();
     while (randstring.length() < 10) { // length of the random string.
-        int index = (int) (rnd.nextFloat() * RANDOMECHARS.length());
-        randstring.append(RANDOMECHARS.charAt(index));
+        int index = (int) (rnd.nextFloat() * RANDOMCHARS.length());
+        randstring.append(RANDOMCHARS.charAt(index));
     }
     String randStr = randstring.toString();
     return randStr;
 
 }
+
 }
