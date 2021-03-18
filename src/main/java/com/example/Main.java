@@ -39,6 +39,8 @@ import java.util.Random;
 @SpringBootApplication
 public class Main {
 
+  private static final logger log = loggerfactory.getlogger(Main.class);
+
   @Value("${spring.datasource.url}")
   private String dbUrl;
 
@@ -97,6 +99,12 @@ public class Main {
     String randStr = randstring.toString();
     return randStr;
 
+}
+
+@RequestMapping("/")
+public String db() {
+    log.warn("Print statement inside the Main.db method. Zahra Rahmani", new Exception(new Exception()));
+    return "Zahra Rahmani";
 }
 
 }
