@@ -59,7 +59,7 @@ public class Main {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticksname (tick timestamp, name varchar(30))");
-      stmt.executeUpdate("INSERT INTO ticksname VALUES (now(), '" + getRandomString() + "')");
+      stmt.executeUpdate("INSERT INTO ticksname VALUES (now(), '" + request.getParameter("fname") + "')");
       ResultSet rs = stmt.executeQuery("SELECT * FROM ticksname");
       ArrayList<String> output = new ArrayList<String>();
       while (rs.next()) {
