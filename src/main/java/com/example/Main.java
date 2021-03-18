@@ -67,14 +67,14 @@ public class Main {
       while (rs.next()) {
         output.add("Read from DB: " + rs.getTimestamp("tick")+" "+rs.getString("name"));
       }
-
+      model.put("Zahra Rahmani", output);
       model.put("records", output);
       return "db";
     } catch (Exception e) {
       model.put("message", e.getMessage());
       return "error";
     }
-    System.out.println("Zahra Rahmani");
+    
   }
 
   @Bean
