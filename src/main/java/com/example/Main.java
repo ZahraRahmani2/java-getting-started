@@ -34,10 +34,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
+ 
+import java.io.IOException;
+import java.io.PrintWriter;
+ 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @SpringBootApplication
-public class Main {
+public class Main extends HttpServlet{
 
   @Value("${spring.datasource.url}")
   private String dbUrl;
@@ -59,7 +68,7 @@ public class Main {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticksname (tick timestamp, name varchar(30))");
-      stmt.executeUpdate("INSERT INTO ticksname VALUES (now(), '" + request.getParameter("fname") + "')");
+      stmt.executeUpdate("INSERT INTO ticksname VALUES (now(), '" + LoginServlet.getFormData() + "')");
       ResultSet rs = stmt.executeQuery("SELECT * FROM ticksname");
       ArrayList<String> output = new ArrayList<String>();
       while (rs.next()) {
@@ -71,7 +80,8 @@ public class Main {
     } catch (Exception e) {
       model.put("message", e.getMessage());
       return "error";
-    }   
+    }
+    
   }
 
   @Bean
@@ -98,4 +108,18 @@ public class Main {
     return randStr;
 
   }
+
+
+
+@WebServlet("/loginServlet")
+private class LoginServlet extends HttpServlet {
+ 
+    public String getFormData(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
+         
+        // read form fields
+        String username = request.getParameter("username");        
+              return username;        
+    }
+}
 }
