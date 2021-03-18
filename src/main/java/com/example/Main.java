@@ -68,6 +68,8 @@ public class Main {
         output.add("Read from DB: " + rs.getTimestamp("tick")+" "+rs.getString("name"));
       }
 
+      System.out.println("Zahra Rahmani");
+
       model.put("records", output);
       return "db";
     } catch (Exception e) {
@@ -99,12 +101,5 @@ public class Main {
     String randStr = randstring.toString();
     return randStr;
 
-}
-
-@RequestMapping("/")
-public String db() {
-    log.warn("Print statement inside the Main.db method. Zahra Rahmani", new Exception(new Exception()));
-    return "Zahra Rahmani";
-}
-
+  }
 }
