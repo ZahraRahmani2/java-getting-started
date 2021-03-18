@@ -39,8 +39,6 @@ import java.util.Random;
 @SpringBootApplication
 public class Main {
 
-  private static final logger log = loggerfactory.getlogger(Main.class);
-
   @Value("${spring.datasource.url}")
   private String dbUrl;
 
@@ -67,7 +65,7 @@ public class Main {
       while (rs.next()) {
         output.add("Read from DB: " + rs.getTimestamp("tick")+" "+rs.getString("name"));
       }
-      log.warn("Zahra Rahmani", new exception(new exception()));
+      System.out.print("Zahra Rahmani");
       model.put("records", output);
       return "db";
     } catch (Exception e) {
