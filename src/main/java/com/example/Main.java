@@ -68,14 +68,13 @@ public class Main {
         output.add("Read from DB: " + rs.getTimestamp("tick")+" "+rs.getString("name"));
       }
 
-      System.out.println("Zahra Rahmani");
-
       model.put("records", output);
       return "db";
     } catch (Exception e) {
       model.put("message", e.getMessage());
       return "error";
     }
+    System.out.println("Zahra Rahmani");
   }
 
   @Bean
