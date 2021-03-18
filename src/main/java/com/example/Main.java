@@ -56,8 +56,6 @@ public class Main {
 
   @RequestMapping("/db")
   String db(Map<String, Object> model) {
-    System.out.println("++++++++++++++++");
-    System.err.println("-----------------");
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticksname (tick timestamp, name varchar(30))");
