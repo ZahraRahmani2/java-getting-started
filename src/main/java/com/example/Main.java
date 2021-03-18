@@ -67,7 +67,7 @@ public class Main {
       while (rs.next()) {
         output.add("Read from DB: " + rs.getTimestamp("tick")+" "+rs.getString("name"));
       }
-      model.put("Zahra Rahmani", output);
+      System.out.print("Zahra Rahmani");
       model.put("records", output);
       return "db";
     } catch (Exception e) {
